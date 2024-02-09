@@ -24,7 +24,7 @@ function App() {
   gsap.ticker.lagSmoothing(0)
   
   return (
-        <main className="bg-gray-100 flex flex-col">
+        <main className="bg-gray-100 flex flex-col box-border">
           <Navbar />
           <AnimatePresence mode="wait">
           <Routes location={location} key={location.key}>

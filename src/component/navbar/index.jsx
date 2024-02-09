@@ -36,17 +36,17 @@ const Navbar = () => {
              clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'
         }, 
              tl.fromTo(linkItems.current, {
-            ease: 'power2.in',
+            ease: 'bounce.out',
             opacity:1,
-            x:'-100%'
+            x:'-110%'
              },
              {
                 x:0
              },'.7',),
              tl.fromTo(socialContainer.current, {
-            ease: 'power2.in',
+            ease: 'bounce.in',
             opacity:1,
-            x:'100%'
+            x:'110%'
              },
              {
                 x:0
@@ -57,22 +57,22 @@ const Navbar = () => {
         else {
          document.body.style.overflow = 'scroll'
          tl.fromTo(linkItems.current, {
-            ease: 'power2.in',
+            ease: 'power.in',
             x: 0
              },
              {
-                x:'-100%'
+                x:'-110%'
              }),
         tl.fromTo(socialContainer.current, {
-            ease: 'power2.in',
+            ease: 'bounce',
             x:'0'
              },
              {
-                x:'100%'
+                x:'110%'
              },''),
 
         tl.to(menu.current, {
-            ease: 'power2.inOut',
+            ease: 'power.inOut',
             height:'0',
             clipPath:'polygon(0 0, 100% 0, 100% 49%, 0 16%)',
         })
@@ -94,7 +94,7 @@ const Navbar = () => {
   return (
     <nav
      ref={menu}
-     className='fixed w-screen flex bg-opacity-50 bg-black h-0 backdrop-blur-md flex-col items-start justify-start  overflow-hidden z-50'>
+     className='fixed w-screen flex bg-opacity-50 bg-black h-0 backdrop-blur-md flex-col box-border items-start justify-start  overflow-hidden z-50 gap-2 px-5'>
 
             <section className='flex justify-between items-center relative z-10  my-3 w-full'>
                  <Clock />
@@ -103,16 +103,16 @@ const Navbar = () => {
 
         <section
           ref={linkItems}
-          className='flex flex-col h-1/2 w-full   justify-center relative items-start text-xl gap-7 p-[10vw] bg-stone-600 rounded-2xl'>
+          className='flex flex-col w-2/3  justify-start relative items-start gap-y-1 p-[10vw] bg-stone-600 rounded-2xl bg-opacity-75 shadow-xl'>
         
                 {links.map((link, index) => (
-                <div className='flex w-fit justify-center relative items-center gap-5 group'>
+                <div className='flex w-fit justify-center relative items-center group h-fit'>
                     <a
-                    className={`text-gray-50 z-10 relative bg-transparent cursor-pointer text-[7vh] font-md capitalize title-font flex text-balance h-[5vh] w-fit select-none ${link.to===location.pathname ? 'text-orange-500' : 'text-gray-50'} `}
+                    className={`text-gray-50 z-10 relative bg-transparent cursor-pointer text-[6vh] capitalize title-font flex text-balance w-fit  select-none font-medium ${link.to===location.pathname ? 'text-orange-500' : 'text-gray-50'} `}
                     key={link.name} 
                     onClick={() => handleClick(link.to)}>
                      {link.name} 
-                                    <span className={`absolute -bottom-1 h-[3px] w-full  ${link.to===location.pathname ? 'bg-orange-500' : 'bg-gray-100'} rounded-lg scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left`}></span>
+                                    <span className={`absolute bottom-0 h-[3px] w-full  ${link.to===location.pathname ? 'bg-orange-500' : 'bg-gray-100'} rounded-lg scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left`}></span>
                     </a>
                  </div>
             ))}
@@ -120,7 +120,7 @@ const Navbar = () => {
         </section>
     <section 
     ref={socialContainer}
-    className='bg-indigo-800 rounded-2xl py-5 h-1/4 flex place-items-center'>
+    className='bg-gray-600 rounded-2xl h-1/5 flex place-items-center bg-opacity-75 shadow-2xl'>
             <Socials ref={socialsRef} /> 
     </section>
     </nav>

@@ -16,14 +16,14 @@ const Clock = () => {
    const timeOptions = {
     hour: '2-digit',
     minute: '2-digit',
-    second: '2-digit',
+    // second: '2-digit',
     hour12: true,
     timeZone: 'Asia/Manila',
   };
 
 
   return (
-    <main className='mx-[10vw]'>
+    <main className='mx-[5vw]'>
         <h1 className='text-zinc-200 text-2xl uppercase'>
         {currentTime.toLocaleTimeString([], timeOptions)}
         </h1>
