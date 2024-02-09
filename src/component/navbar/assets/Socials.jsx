@@ -14,7 +14,7 @@ const Socials = forwardRef((props, ref) => {
 
     useEffect(() => {
         gsap.fromTo(socialRefs.current, { opacity: 0,  }, 
-        {opacity: 1, delay: .5, stagger: 0.1, duration: 0.3});
+        {opacity: 1});
     }, [socialRefs, isToggleMenu]);
 
   return (
@@ -26,7 +26,7 @@ const Socials = forwardRef((props, ref) => {
           <a
            ref={(el) => (socialRefs.current[index] = el)}
             href={link.url}
-            className={` hover:opacity-90 over:opacity-85 transition group-hover:-translate-y-1 text-lg text-gray-50 bg-blend-difference opacity-0 uppercasexl px-2`}
+            className={` hover:opacity-90 over:opacity-85 transition group-hover:-translate-y-1 text-lg text-gray-50 bg-blend-difference opacity-0 uppercasexl`}
             key={link.name}
             target="_blank"
             rel="noopener noreferrer"

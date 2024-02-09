@@ -13,7 +13,8 @@ const Navbar = () => {
     const {setToggleMenu, isToggleMenu} = useContext(DataContext)
     const menu = useRef(null)
     const linkItems= useRef(null)
-    const socialsRef = useRef(null);  
+    const socialContainer = useRef(null)
+    const socialsRef = useRef(null) 
     const navigate = useNavigate()
 
     const links = [
@@ -34,36 +35,47 @@ const Navbar = () => {
             ease: 'power1.in',
              clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'
         }, 
-             tl.to(linkItems.current, {
-            opacity:1,
+             tl.fromTo(linkItems.current, {
             ease: 'power2.in',
-            scale: 1
-             },'+=.4',),
+            opacity:1,
+            x:'-100%'
+             },
+             {
+                x:0
+             },'.7',),
+             tl.fromTo(socialContainer.current, {
+            ease: 'power2.in',
+            opacity:1,
+            x:'100%'
+             },
+             {
+                x:0
+             },'.7',),
+             
         )
         }
         else {
          document.body.style.overflow = 'scroll'
-        tl.to(linkItems.current, {
-                        scale: 1.1,
-                        duration: 1,
-                        rotate: -5,
-                         ease: 'power2.in',
-                         transformOrigin: '-5% -5%',
-        },'-=.3')
+         tl.fromTo(linkItems.current, {
+            ease: 'power2.in',
+            x: 0
+             },
+             {
+                x:'-100%'
+             }),
+        tl.fromTo(socialContainer.current, {
+            ease: 'power2.in',
+            x:'0'
+             },
+             {
+                x:'100%'
+             },''),
 
         tl.to(menu.current, {
             ease: 'power2.inOut',
             height:'0',
             clipPath:'polygon(0 0, 100% 0, 100% 49%, 0 16%)',
-           onComplete: () =>{
-                linkItems.current.style.opacity = 0;
-                linkItems.current.style.transform = 'rotate(0deg) translateY(-50%)';
-            }
-        },'-=.5')
-             tl.to(linkItems.current, {
-            scale: 1,
-            rotate: 0
-             })
+        })
         }
 
     }, [isToggleMenu]);
@@ -82,26 +94,19 @@ const Navbar = () => {
   return (
     <nav
      ref={menu}
-     className='fixed w-screen flex bg-opacity-50 bg-black h-0 backdrop-blur-md flex-col items-start justify-around  overflow-hidden z-50'>
+     className='fixed w-screen flex bg-opacity-50 bg-black h-0 backdrop-blur-md flex-col items-start justify-start  overflow-hidden z-50'>
 
-            <section className='absolute z-10 top-[3vw] right-[3vw]'>
+            <section className='flex justify-between items-center relative z-10  my-3 w-full'>
+                 <Clock />
                 <Close />
             </section>
 
-            <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isToggleMenu ? 1 : 0, rotate: isToggleMenu ? 0 : 10 }}
-            transition={{  delay : .7 }}
-            >
-            <Clock />
-            </motion.section>
-
         <section
           ref={linkItems}
-          className='flex flex-col w-fit justify-center relative items-start text-xl h-auto gap-7 mx-[10vw] opacity-0'>
+          className='flex flex-col h-1/2 w-full   justify-center relative items-start text-xl gap-7 p-[10vw] bg-stone-600 rounded-2xl'>
         
                 {links.map((link, index) => (
-                <div className='flex w-fit justify-center relative items-center gap-5 group '>
+                <div className='flex w-fit justify-center relative items-center gap-5 group'>
                     <a
                     className={`text-gray-50 z-10 relative bg-transparent cursor-pointer text-[7vh] font-md capitalize title-font flex text-balance h-[5vh] w-fit select-none ${link.to===location.pathname ? 'text-orange-500' : 'text-gray-50'} `}
                     key={link.name} 
@@ -113,7 +118,9 @@ const Navbar = () => {
             ))}
 
         </section>
-    <section>
+    <section 
+    ref={socialContainer}
+    className='bg-indigo-800 rounded-2xl py-5 h-1/4 flex place-items-center'>
             <Socials ref={socialsRef} /> 
     </section>
     </nav>
