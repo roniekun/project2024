@@ -118,14 +118,14 @@ const Navbar = () => {
 
         <section
           ref={linkItems}
-          className='flex flex-col w-1/2  justify-center relative items-start gap-y-1 px-[5vw] py-5 bg-zinc-900 rounded-2xl bg-opacity-75 shadow-xl'>
-              <h1 className='uppercase font-bold text-blue-500 self-start text-xs mb-1'>Navigations</h1>
+          className='flex flex-col w-1/2  justify-center relative items-start gap-y-1 px-[5vw] my-1 py-5 bg-zinc-900 rounded-2xl bg-opacity-75 shadow-xl'>
+              <h1 className='uppercase font-extrabold text-blue-500 self-start text-xs mb-2'>Navigations</h1>
 
         
                 {links.map((link, index) => (
                 <div className='flex w-fit justify-center relative items-center group h-fit'>
                     <a
-                    className={`z-10 relative bg-transparent cursor-pointer text-[4vh] capitalize title-font flex w-fit  select-none font-bold ${link.to===location.pathname ? 'text-orange-500' : 'text-stone-300'} `}
+                    className={`z-10 relative bg-transparent cursor-pointer text-[4vh] capitalize title-font flex w-fit font-normal  select-none ${link.to===location.pathname ? 'text-orange-500' : 'text-stone-300'} `}
                     key={link.name} 
                     onClick={() => handleClick(link.to)}>
                      {link.name} 
@@ -138,11 +138,11 @@ const Navbar = () => {
     <section 
     ref={socialContainer}
     className='flex flex-col bg-zinc-900 rounded-2xl w-full gap-3 place-items-center bg-opacity-75 shadow-2xl px-[5vw]  py-5'>
-    <h1 className='uppercase font-bold text-blue-500 self-start text-xs'>Socials</h1>
+    <h1 className='uppercase font-extrabold text-blue-500 self-start text-xs'>Socials</h1>
             <Socials ref={socialsRef} /> 
     </section>
     <section  ref={clock}
-    className='flex self-end basis-1/3 rounded-3xl shadow-3xl shrink bg-blue-500 justify-center overflow-hidden items-center w-1/2'>
+    className='flex self-end basis-1/4 rounded-3xl shadow-3xl shrink bg-blue-500 justify-center overflow-hidden items-center w-1/2'>
           <Clock />
     </section>
     </nav>
