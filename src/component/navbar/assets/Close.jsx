@@ -9,8 +9,8 @@ const Close = () => {
             <button
             onClick={()=>setToggleMenu(false)}
             className='group  cursor-pointer brightness-95 hover:brightness-100 text-gray-300 place-items-center flex mx-[5vw] rounded-2xl'>
-            <span className='text-[5vw]'>Close</span> 
-            <IoCloseSharp className='fill-gray-300 w-7 h-7 relative group-hover:opacity-90'/>
+            <span className='text-[4vw]'>Close</span> 
+            <IoCloseSharp className='fill-stone-300 w-7 h-7 relative group-hover:opacity-90'/>
             </button> 
   )
 }
