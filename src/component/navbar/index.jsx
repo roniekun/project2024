@@ -118,7 +118,7 @@ const Navbar = () => {
         <div className='flex flex-wrap'>
         <section
           ref={linkItems}
-          className='flex flex-col justify-center relative items-start gap-y-1 px-[5vw] my-1 py-5 bg-zinc-900 rounded-2xl bg-opacity-75 shadow-xl'>
+          className='flex flex-col justify-center relative items-start gap-y-1 px-[5vw] my-1 py-5 rounded-2xl bg-opacity-75 shadow-sm'>
               <h1 className='uppercase font-extrabold text-blue-500 self-start text-xs mb-2'>Navigations</h1>
 
         
@@ -139,7 +139,7 @@ const Navbar = () => {
 
     <section 
     ref={socialContainer}
-    className='flex flex-col bg-zinc-900 rounded-2xl w-full gap-3 bg-opacity-75 shadow-2xl px-[5vw]  py-5'>
+    className='flex flex-col rounded-2xl w-full gap-3 bg-opacity-75 shadow-sm px-[5vw]  py-5'>
     <h1 className='uppercase font-extrabold text-blue-500 self-start text-xs'>Socials</h1>
             <Socials ref={socialsRef} /> 
     </section>
