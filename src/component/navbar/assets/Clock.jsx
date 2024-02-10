@@ -24,7 +24,7 @@ const Clock = () => {
 
   return (
     <main className='mx-[5vw]'>
-        <h1 className='text-zinc-200 text-3xl uppercase font-normal text-balance'>
+        <h1 className='text-zinc-200 text-md uppercase font-normal text-balance'>
         {currentTime.toLocaleTimeString([], timeOptions)}
         </h1>
     </main>

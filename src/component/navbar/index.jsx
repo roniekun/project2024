@@ -31,7 +31,6 @@ const Navbar = () => {
         if (isToggleMenu) {
          document.body.style.overflow = 'hidden'
         tl.to(menu.current, {
-             duration: .5,
             height: '100vh',
             ease: 'power1.in',
              clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'
@@ -110,41 +109,42 @@ const Navbar = () => {
   return (
     <nav
      ref={menu}
-     className='fixed w-screen flex bg-opacity-50 bg-black h-0 backdrop-blur-md flex-col box-border items-start justify-start  overflow-hidden z-50 gap-2 px-5'>
+     className='fixed w-screen flex flex-col bg-opacity-50 bg-gradient-to-b  from-neutral-950 via-neutral-800 to-transparent  h-0 backdrop-blur-md box-border  items-start justify-start  overflow-hidden z-50 gap-2 px-5'>
 
-            <section className='flex justify-end items-center relative z-10  my-3 w-full'>
+            <section className='flex justify-between items-center relative z-10  my-3 w-full'>
+                 <Clock />
                 <Close />
             </section>
-
+        <div className='flex flex-wrap'>
         <section
           ref={linkItems}
-          className='flex flex-col w-1/2  justify-center relative items-start gap-y-1 px-[5vw] my-1 py-5 bg-zinc-900 rounded-2xl bg-opacity-75 shadow-xl'>
+          className='flex flex-col justify-center relative items-start gap-y-1 px-[5vw] my-1 py-5 bg-zinc-900 rounded-2xl bg-opacity-75 shadow-xl'>
               <h1 className='uppercase font-extrabold text-blue-500 self-start text-xs mb-2'>Navigations</h1>
 
         
                 {links.map((link, index) => (
                 <div className='flex w-fit justify-center relative items-center group h-fit'>
                     <a
-                    className={`z-10 relative bg-transparent cursor-pointer text-[4vh] capitalize title-font flex w-fit font-normal  select-none ${link.to===location.pathname ? 'text-orange-500' : 'text-stone-300'} `}
+                    className={`z-10 relative bg-transparent cursor-pointer text-xl capitalize title-font flex w-fit font-normal  select-none                          ${link.to===location.pathname ? 'text-gray-50' : 'text-gray-400'}
+`}
                     key={link.name} 
                     onClick={() => handleClick(link.to)}>
                      {link.name} 
-                                    <span className={`absolute bottom-0 h-[3px] w-full  ${link.to===location.pathname ? 'bg-orange-500' : 'bg-gray-100'} rounded-lg scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left`}></span>
+                                    {/* <span className={`absolute bottom-0 h-[3px] w-full  ${link.to===location.pathname ? 'bg-orange-500' : 'bg-gray-100'} rounded-lg scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left`}></span> */}
                     </a>
                  </div>
             ))}
 
         </section>
+
     <section 
     ref={socialContainer}
-    className='flex flex-col bg-zinc-900 rounded-2xl w-full gap-3 place-items-center bg-opacity-75 shadow-2xl px-[5vw]  py-5'>
+    className='flex flex-col bg-zinc-900 rounded-2xl w-full gap-3 bg-opacity-75 shadow-2xl px-[5vw]  py-5'>
     <h1 className='uppercase font-extrabold text-blue-500 self-start text-xs'>Socials</h1>
             <Socials ref={socialsRef} /> 
     </section>
-    <section  ref={clock}
-    className='flex self-end basis-1/4 rounded-3xl shadow-3xl shrink bg-blue-500 justify-center overflow-hidden items-center w-1/2'>
-          <Clock />
-    </section>
+
+        </div>
     </nav>
   )
 }
